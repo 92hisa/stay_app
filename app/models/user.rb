@@ -7,6 +7,8 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { maximum: 50 }
   validates :name, length: { maximum: 200 }
   
+  mount_uploader :profile_photo, ImageUploader
+  
   def update_without_current_password(params, *options)
     params.delete(:current_password)
 

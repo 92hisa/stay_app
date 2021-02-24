@@ -1,5 +1,12 @@
 
-<%= image_tag avatar_url(@user) %>
+<% if @user.profile_photo? %>
+<%= image_tag @user.profile_photo.url %>
+<% else %>
+<%= image_tag '/default.jpg', size: '100x100' %>
+<% end %>
+
 <%= @user.name %>
 <%= @user.email %>
 <%= @user.intro_text %>
+
+<!--<%= image_tag 'default.jpg' %>-->
