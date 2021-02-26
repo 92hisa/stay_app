@@ -1,0 +1,26 @@
+<h1>予約を変更する</h1>
+
+<%= form_with(model: [@post, @reservation], local: true) do |f| %>
+<div class="row">
+  <div class="form-group">
+    <div class="field">
+     <%= f.label "チェックイン" %><br/>
+     <%= f.date_field :checkin, class: "form-control" %>
+     
+    </div>
+    <div class="field">
+      <%= f.label "チェックアウト" %><br/>
+      <%= f.date_field :checkout, class: "form-control"%>
+    </div><br>
+    
+    <div class="form-group">
+      <%= f.label "宿泊人数" %><br/>
+      <%= f.text_field :people, class: "form-control" %>
+    </div>
+    
+    <div class="actions">
+      <%= f.submit "変更する" %>
+    </div>
+  </div>
+ </div>  
+<% end %>

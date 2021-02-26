@@ -1,0 +1,15 @@
+<h1>予約内容確認</h1>
+
+<%= link_to "トップページに戻る", root_path %><br>
+<% @post.reservations.each do |r| %><br>
+<%= "予約日" %><br>
+<%= r.created_at %><br>
+<%= "チェックイン" %><br>
+<%= r.checkin %><br>
+<%= "チェックアウト" %><br>
+<%= r.checkout %><br>
+<%= "宿泊人数" %><br>
+<%= r.people %><br>
+<%= link_to "予約を変更する", edit_post_reservation_path(@post.id, @reservation.id) %><br>
+<%= link_to "予約をキャンセルする", post_reservation_path(@post.id, @reservation.id), method: :delete %><br>
+<% end %>

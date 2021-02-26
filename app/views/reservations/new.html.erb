@@ -1,1 +1,26 @@
 <h1>Hello</h1>
+
+<p>１名あたり</p>
+<%= number_to_currency(@post.price, unit: "￥", precision: 0) + "/泊"%><br>
+
+<div class="row">
+  <div class="form-group">
+    <%= form_with(model: [@post, @reservation], local: true) do |f| %><br>
+      <div class="field">
+        <%= f.label "チェックイン" %>
+        <%= f.date_field :checkin, class: "form-control" %><br>
+      </div>
+      <div class="field">
+        <%= f.label "チェックアウト" %>
+        <%= f.date_field :checkout, class: "form-control" %><br>
+      </div>
+      <div class="field">
+        <%= f.label "宿泊人数" %>
+        <%= f.text_field :people, class: "form-control" %><br>
+      </div>
+      <div class="actions">
+        <%= f.submit "予約する" %>
+      </div>
+    <% end %>
+  </div>
+</div>

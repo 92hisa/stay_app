@@ -1,13 +1,15 @@
 class ReservationsController < ApplicationController
     
     def new
+        @post = Post.find_by(id: params[:post_id])
         @reservation = Reservation.new
     end
     
     def create
-        @reservation = Reservaton.new(reservation_params)
+        @post = Post.find_by(id: params[:post_id])
+        @reservation = @post.reservations.build(reservation_params)
         if @reservation.save
-            redirect_to post_reservation_path(id: current_user)
+            redirect_to post_reservation_path(id: current_user.id)
             flash[:notice] = "予約が完了しました"
         else
             redirect_to new_post_reservation_path
@@ -15,9 +17,36 @@ class ReservationsController < ApplicationController
         end
     end
     
+    def show
+        @post = Post.find_by(id: params[:post_id])
+        @reservation = Reservation.find_by(id: params[:id])
+    end
+    
+    def edit
+        @post = Post.find_by(id: params[:post_id])
+        @reservation = Reservation.find_by(id: params[:id])
+    end
+    
+    def update
+        @post = Post.find_by(id: params[:post_id])
+        if @reservation = @post.reservations.update(reservation_params)
+            redirect_to post_reservation_path(id: current_user.id)
+            flash[:notice] = "予約の変更が完了しました"
+        else
+            redirect_to root_path
+            flash[:alert] = "予約の変更ができませんでした"
+        end
+    end
+    
+    def destroy
+        @post = Post.find_by(id: params[:post_id])
+        @reservation = @post.reservations.destroy
+        redirect_to post_reservations(id: current_user.id)
+    end
+    
     private
     
     def reservation_params
-        params.require(:reservation).permit(:checkin, :checkput, :people)
+        params.require(:reservation).permit(:checkin, :checkout, :people).merge(user_id: current_user.id)
     end
 end
