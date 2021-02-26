@@ -1,0 +1,12 @@
+<% @user.posts.each do |post| %>
+<% if post.caption? %>
+        <%= image_tag post.caption.url %><br>
+    <% else %>
+        <%= image_tag 'coomingsoon.jpg', size: '200x200' %>
+    <% end %><br>
+        <%= post.room_name %><br>
+        <%= post.prefecture + post.city %><br>
+        <%= post.room_intro %><br>
+        <%= post.price %><br>
+        <%= time_ago_in_words(post.created_at).upcase + "前" %><br>
+<% end %>
