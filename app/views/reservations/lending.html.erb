@@ -1,0 +1,34 @@
+<h1>貸出し予定</h1>
+
+<table class="table table-striped"><br>
+    <thread>
+    <tr>
+    <th>ID</th>
+    <th>User_ID</th>
+    <th>予約者名</th>
+    <th>Post_ID</th>
+    <th>予約日</th>
+    <th>貸出し日</th>
+    <th>貸出し終了日</th>
+    <th>宿泊人数</th>
+    <th>詳細</th>
+    </tr>
+    </thread>
+    <% @lending.each do |lending| %>
+    <% lending.reservations.each do |r| %>
+    <tbody>
+    <td><%= r.id %></td>
+    <td><%= r.user_id %></td>
+    <td><%= r.user.name %></td>
+    <td><%= r.post_id %></td>
+    <td><%= r.created_at %></td>
+    <td><%= r.checkin %></td>
+    <td><%= r.checkout %></td>
+    <td><%= r.people %></td>
+    <% if lending.user_id == current_user.id %>
+    <td><%= link_to "詳細", post_reservation_path(lending, r), class: "btn btn-primary" %></td>
+    <% end %>
+    </tbody>
+<% end %>
+<% end %>
+</table>

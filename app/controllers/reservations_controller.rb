@@ -26,6 +26,10 @@ class ReservationsController < ApplicationController
         @reservation_all = current_user.reservations.all
     end
     
+    def lending
+        @lending = current_user.posts.all
+    end
+    
     def edit
         @post = Post.find_by(id: params[:post_id])
         @reservation = Reservation.find_by(id: params[:id])

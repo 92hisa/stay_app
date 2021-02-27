@@ -4,12 +4,16 @@
 <% @post.reservations.each do |r| %><br>
 <%= "予約日" %><br>
 <%= r.created_at %><br>
+<%= "予約者名" %><br>
+<%= r.user.name %><br>
 <%= "チェックイン" %><br>
 <%= r.checkin %><br>
 <%= "チェックアウト" %><br>
 <%= r.checkout %><br>
 <%= "宿泊人数" %><br>
 <%= r.people %><br>
+<% if r.user_id == current_user.id %>
 <%= link_to "予約を変更する", edit_post_reservation_path(r, r) %><br>
 <%= link_to "予約をキャンセルする", post_reservation_path(r, r), method: :delete %><br>
+<% end %>
 <% end %>

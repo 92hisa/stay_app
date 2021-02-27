@@ -23,9 +23,10 @@
     <td><%= r.checkin %></td>
     <td><%= r.checkout %></td>
     <td><%= r.people %></td>
-    <!----eachメソッド内でパラメーターを飛ばせない>-->
-    <td><%= link_to "予約変更", edit_post_reservation_path(r, r), class: "btn btn-primary" %></td>
-    <td><%= link_to "予約キャンセル", post_reservation_path(r, r), method: :delete, class: "btn btn-primary" %></td>
+    <% if r.user_id == current_user.id %>
+    <td><%= link_to "予約変更", edit_post_reservation_path(r.post_id, r), class: "btn btn-primary" %></td>
+    <td><%= link_to "予約キャンセル", post_reservation_path(r.post_id, r), method: :delete, class: "btn btn-primary" %></td>
+    <% end %>
     </tbody>
 <% end %>
 </table>
