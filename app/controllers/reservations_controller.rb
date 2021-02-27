@@ -22,6 +22,10 @@ class ReservationsController < ApplicationController
         @reservation = Reservation.find_by(id: params[:id])
     end
     
+    def index
+        @reservation_all = current_user.reservations.all
+    end
+    
     def edit
         @post = Post.find_by(id: params[:post_id])
         @reservation = Reservation.find_by(id: params[:id])
@@ -40,13 +44,19 @@ class ReservationsController < ApplicationController
     
     def destroy
         @post = Post.find_by(id: params[:post_id])
-        @reservation = @post.reservations.destroy
-        redirect_to post_reservations(id: current_user.id)
+        @reservation = Reservation.find_by(id: params[:id])
+        if @reservation.destroy
+            redirect_to post_reservations_path(id: current_user.id)
+            flash[:notice] = "予約のキャンセルが完了しました"
+        else
+            redirect_to post_reservations_path(id: current_user.id)
+            flash[:alert] = "予約のキャンセルができませんでした"
+        end
     end
     
     private
     
     def reservation_params
-        params.require(:reservation).permit(:checkin, :checkout, :people).merge(user_id: current_user.id)
+        params.require(:reservation).permit(:checkin, :checkout, :people, :post_id).merge(user_id: current_user.id)
     end
 end

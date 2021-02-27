@@ -10,6 +10,6 @@
 <%= r.checkout %><br>
 <%= "宿泊人数" %><br>
 <%= r.people %><br>
-<%= link_to "予約を変更する", edit_post_reservation_path(@post.id, @reservation.id) %><br>
-<%= link_to "予約をキャンセルする", post_reservation_path(@post.id, @reservation.id), method: :delete %><br>
+<%= link_to "予約を変更する", edit_post_reservation_path(r, r) %><br>
+<%= link_to "予約をキャンセルする", post_reservation_path(r, r), method: :delete %><br>
 <% end %>

@@ -1,0 +1,32 @@
+<br><h1>予約確認</h1><br>
+
+<table class="table table-striped">
+    <thread>
+    <tr>
+    <th>ID</th>
+    <th>Post_ID</th>
+    <th>User_ID</th>
+    <th>予約日</th>
+    <th>チェックイン</th>
+    <th>チェックアウト</th>
+    <th>宿泊人数</th>
+    <th></th>
+    <th></th>
+    </tr>
+    </thread>
+    <% @reservation_all.each do |r|%>
+    <tbody>
+    <td><%= r.id %></td>
+    <td><%= r.post_id %></td>
+    <td><%= r.user_id %></td>
+    <td><%= r.created_at %></td>
+    <td><%= r.checkin %></td>
+    <td><%= r.checkout %></td>
+    <td><%= r.people %></td>
+    <!----eachメソッド内でパラメーターを飛ばせない>-->
+    <td><%= link_to "予約変更", edit_post_reservation_path(r, r), class: "btn btn-primary" %></td>
+    <td><%= link_to "予約キャンセル", post_reservation_path(r, r), method: :delete, class: "btn btn-primary" %></td>
+    </tbody>
+<% end %>
+</table>
+

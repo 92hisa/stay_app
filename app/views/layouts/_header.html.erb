@@ -14,7 +14,7 @@
         　<%= link_to "ログイン",new_user_session_path,class: "dropdown-item" %>
         　<% end %>
           <% if user_signed_in? %>
-          <%= link_to "予約確認", "#", class: "dropdown-item" %><br>
+          <%= link_to "予約確認", reservation_history_path, class: "dropdown-item" %><br>
           <%= link_to "部屋を登録する", new_post_path, class: "dropdown-item" %><br>
           <%= link_to "登録済みの部屋", list_user_path(id: current_user), class: "dropdown-item" %><br>
           <%= link_to "登録情報", user_path(id: current_user), class: "dropdown-item" %><br>
