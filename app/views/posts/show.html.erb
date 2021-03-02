@@ -1,13 +1,29 @@
-<% if @post.caption? %>
-    <%= image_tag @post.caption.url %><br>
-<% else %>
-    <%= image_tag 'coomingsoon.jpg', size: '200x200' %>
-<% end %><br>
-    <%= @post.room_name %><br>
-    <%= @post.prefecture + @post.city %><br>
-    <%= @post.price %><br>
-    <%= @post.room_intro %><br>
-    <%= time_ago_in_words(@post.created_at).upcase + "前" %><br>
-
-<%= link_to "予約する", new_post_reservation_path(@post.id) %>
-
+	<div class="container">
+		<div class="card">
+			<div class="container-fliud">
+				<div class="wrapper row">
+					<div class="preview col-md-6">
+						  <% if @post.caption? %>
+						  <div class="preview-pic tab-content">
+						  <div class="tab-pane active" id="pic-1"><%= image_tag @post.caption.url, size: '450x450' %></div>
+						  <% else %>
+						  <%= image_tag 'coomingsoon.jpg', size: '450x450' %>
+                          <% end %>
+						</div>
+					</div>
+					<div class="details col-md-6">
+						<h3 class="product-title"><%= @post.room_name %></h3>
+						<p class="product-description"><%= @post.room_intro %></p>
+						<h4 class="price">1泊料金 <span><%= "¥" + @post.price %></span></h4>
+						<p class="vote"><%= @post.city %></p>
+						<div class="action">
+						    <%= link_to "予約する", new_post_reservation_path(@post.id), class: "btn btn-defalut add-to-cart" %><br>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="text-right">
+		<%= link_to "戻る", :back %><br>
+		</div>
+	</div>

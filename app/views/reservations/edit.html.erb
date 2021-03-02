@@ -18,9 +18,9 @@
               <%= f.date_field :checkout, class: "form-control", min: Date.current %>
             </div><br>
             
-            <div class="form-group">
+            <div class="field">
               <%= f.label "宿泊人数" %><br/>
-              <%= f.text_field :people, class: "form-control" %>
+              <%= f.select :people,[['1名', 1], ['2名', 2], ['3名', 3], ['4名', 4], ['5名', 5], ['6名', 6], ['7名', 7], ['8名', 8], ['9名', 9], ['10名', 10]], { include_blank: true, selected: 1 }, class: "form-control" %>
             </div><br>
             
             <div class="actions text-right">

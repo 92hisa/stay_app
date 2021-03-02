@@ -5,9 +5,13 @@ class Post < ApplicationRecord
     
     mount_uploader :caption, ImageUploader
     
+    validates :room_name, presence: true
+    validates :city, presence: true
+    validates :price, presence: true
+    
     def self.search(search)
       if search
-        Post.where(['prefecture LIKE ?', "%#{search}%"])
+        Post.where(['city LIKE ?', "%#{search}%"])
       else
         Post.all
       end

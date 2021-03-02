@@ -10,14 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_02_26_042450) do
+ActiveRecord::Schema.define(version: 2021_03_02_062648) do
 
   create_table "posts", force: :cascade do |t|
     t.string "caption"
     t.string "room_name", null: false
     t.text "room_intro", null: false
     t.string "price", null: false
-    t.string "prefecture", null: false
     t.string "city", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", precision: 6, null: false

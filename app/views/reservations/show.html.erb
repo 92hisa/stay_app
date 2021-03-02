@@ -1,19 +1,39 @@
-<h1>予約内容確認</h1>
 
-<%= link_to "トップページに戻る", root_path %><br>
-<% @post.reservations.each do |r| %><br>
-<%= "予約日" %><br>
-<%= r.created_at %><br>
-<%= "予約者名" %><br>
-<%= r.user.name %><br>
-<%= "チェックイン" %><br>
-<%= r.checkin %><br>
-<%= "チェックアウト" %><br>
-<%= r.checkout %><br>
-<%= "宿泊人数" %><br>
-<%= r.people %><br>
-<% if r.user_id == current_user.id %>
-<%= link_to "予約を変更する", edit_post_reservation_path(r, r) %><br>
-<%= link_to "予約をキャンセルする", post_reservation_path(r, r), method: :delete %><br>
-<% end %>
-<% end %>
+<div class="container">
+  <h1 class="text-center">予約内容確認</h1>
+  <div class="row">
+    <div class="col-md-12 col-sm-12 offset-md-12">
+        <table class="table text-center">
+          <thread>
+            <tr>
+            <th>予約ID</th>
+            <th>予約日</th>
+            <th>部屋の名前</th>
+            <th>チェックイン</th>
+            <th>チェックアウト</th>
+            <th>宿泊人数</th>
+            </tr>
+            </thread
+            <tbody>
+            <tr>
+                <% @post.reservations.each do |r| %>
+                <td><%= r.id %></td>
+                <td><%= r.created_at.to_s(:datetime_jp) %></td>
+                <td><%= @post.room_name %></td>
+                <td><%= r.checkin %></td>
+                <td><%= r.checkout %></td>
+                <td><%= r.people %></td>
+            </th>
+            </tbody>  
+        </table>
+        <div class="text-right">
+        <% if r.user_id == current_user.id %>
+                <td><%= link_to "予約を変更する", edit_post_reservation_path(r, r) %><br>
+                <td><%= link_to "予約をキャンセルする", post_reservation_path(r, r), method: :delete %><br>
+                <td><%= link_to "戻る", :back %><br>
+        <% end %>
+        <% end %>
+        </div>
+    </div>
+  </div>
+</div>  

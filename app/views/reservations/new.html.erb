@@ -11,11 +11,11 @@
           <%= form_with(model: [@post, @reservation], local: true) do |f| %><br>
             <div class="field">
               <%= f.label "チェックイン" %><br>
-              <%= f.date_field :checkin, class: "form-control" %><br>
+              <%= f.date_field :checkin, class: "form-control", min: Date.current %><br>
             </div><br>
             <div class="field">
               <%= f.label "チェックアウト" %>
-              <%= f.date_field :checkout, class: "form-control" %><br>
+              <%= f.date_field :checkout, class: "form-control", min: Date.current %><br>
             </div><br>
             <div class="field">
               <%= f.label "宿泊人数" %>
