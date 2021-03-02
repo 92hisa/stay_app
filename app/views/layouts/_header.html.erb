@@ -14,29 +14,28 @@
             </li>
             <% end %>
             <li class="nav-item dropdown disabled">
-              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">メニュー</a>
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">アカウント</a>
               <div class="dropdown-menu">
               　<% if not user_signed_in? %>
               　<%= link_to "新規登録",new_user_registration_path,class: "dropdown-item" %>
               　<%= link_to "ログイン",new_user_session_path,class: "dropdown-item" %>
               　<% end %>
                 <% if user_signed_in? %>
-                <%= link_to "予約確認", reservation_history_path, class: "dropdown-item" %><br>
-                <%= link_to "貸出し予定", lending_history_path, class: "dropdown-item" %><br>
-                <%= link_to "部屋を登録する", new_post_path, class: "dropdown-item" %><br>
-                <%= link_to "登録済みの部屋", list_user_path(id: current_user), class: "dropdown-item" %><br>
                 <%= link_to "登録情報", user_path(id: current_user), class: "dropdown-item" %><br>
-                <%= link_to "アカウント編集", edit_user_registration_path, class: "dropdown-item" %>
               　<%= link_to "ログアウト", destroy_user_session_path, method: :delete, class: "dropdown-item" %>
               　<% end %>
               </div>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Disabled</a>
-            </li>
+            <% if user_signed_in? %>
+            <li class="nav-item dropdown disabled">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">メニュー</a>
+              <div class="dropdown-menu">
+                <%= link_to "宿泊予約の確認", reservation_history_path, class: "dropdown-item" %><br>
+                <%= link_to "部屋の貸出し予定", lending_history_path, class: "dropdown-item" %><br>
+                <%= link_to "部屋を登録する", new_post_path, class: "dropdown-item" %><br>
+                <%= link_to "登録済みの部屋", list_user_path(id: current_user), class: "dropdown-item" %><br>
+              </div>  
+            </li>  
+            <% end %>
           </ul>
-          <form class="form-inline mt-2 mt-md-0">
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
         </div>
       </nav>

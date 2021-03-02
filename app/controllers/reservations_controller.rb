@@ -37,12 +37,13 @@ class ReservationsController < ApplicationController
     
     def update
         @post = Post.find_by(id: params[:post_id])
-        if @reservation = @post.reservations.update(reservation_params)
-            redirect_to post_reservation_path(id: current_user.id)
+        @reservation = @post.reservations.build(reservation_params)
+        if @reservation.valid? && @reservation.update(reservation_params)
             flash[:notice] = "予約の変更が完了しました"
+            redirect_to post_reservation_path(id: current_user.id)
         else
-            redirect_to root_path
             flash[:alert] = "予約の変更ができませんでした"
+            render 'edit'
         end
     end
     

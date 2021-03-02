@@ -1,12 +1,39 @@
 
-<% if @user.profile_photo? %>
-<%= image_tag @user.profile_photo.url %>
-<% else %>
-<%= image_tag '/default.jpg', size: '100x100' %>
-<% end %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-3 col-sm-12">
+      <div class="icon_image ">
+        <% if @user.profile_photo? %>
+        <%= image_tag @user.profile_photo.url %>
+        <% else %>
+        <%= image_tag '/default.jpg', size: '100x100' %>
+        <% end %>
+      </div>
+    </div>  
 
-<%= @user.name %>
-<%= @user.email %>
-<%= @user.intro_text %>
-
-<!--<%= image_tag 'default.jpg' %>-->
+  <div class="col-md-9 col-sm-12">
+    <table class="table table-striped text-center">
+      <tbody>
+        <tr>
+          <th>user_ID</th>
+          <th>ユーザー名</th>
+          <th>メールアドレス</th>
+          <th>プロフィールコメント</th>
+          <th></th>
+        </tr>
+        <tr>
+          <th><%= @user.id %></th>
+          <th><%= @user.name %></th>
+          <th><%= @user.email %></th>
+          <th><%= @user.intro_text %></th>
+          <th>
+            <% if @user == current_user %>
+            <%= link_to "登録情報を変更", edit_user_registration_path, class: "btn btn-info" %>
+            <% end %>
+          </th>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+ </div>
+</div>

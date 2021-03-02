@@ -1,26 +1,34 @@
-<h1>Hello</h1>
+<div class="container">
 
-<p>１名あたり</p>
-<%= number_to_currency(@post.price, unit: "￥", precision: 0) + "/泊"%><br>
+  <h1 class="text-center">予約フォーム</h1>
 
-<div class="row">
-  <div class="form-group">
-    <%= form_with(model: [@post, @reservation], local: true) do |f| %><br>
-      <div class="field">
-        <%= f.label "チェックイン" %>
-        <%= f.date_field :checkin, class: "form-control" %><br>
-      </div>
-      <div class="field">
-        <%= f.label "チェックアウト" %>
-        <%= f.date_field :checkout, class: "form-control" %><br>
-      </div>
-      <div class="field">
-        <%= f.label "宿泊人数" %>
-        <%= f.text_field :people, class: "form-control" %><br>
-      </div>
-      <div class="actions">
-        <%= f.submit "予約する" %>
-      </div>
-    <% end %>
+  <p>１名あたり</p>
+  <%= number_to_currency(@post.price, unit: "￥", precision: 0) + "/泊"%><br>
+
+  <div class="row">
+    <div class="col-md-6 col-sm-6 offset-md-3">
+        <div class="form-group">
+          <%= form_with(model: [@post, @reservation], local: true) do |f| %><br>
+            <div class="field">
+              <%= f.label "チェックイン" %><br>
+              <%= f.date_field :checkin, class: "form-control" %><br>
+            </div><br>
+            <div class="field">
+              <%= f.label "チェックアウト" %>
+              <%= f.date_field :checkout, class: "form-control" %><br>
+            </div><br>
+            <div class="field">
+              <%= f.label "宿泊人数" %>
+              <%= f.text_field :people, class: "form-control" %><br>
+            </div><br>
+            
+            <div class="actions text-right">
+              <%= f.submit "予約する" %>
+            </div><br>
+            <div class="text-right">
+              <%= link_to "戻る", :back %>
+          <% end %>
+        </div>
+   </div>
   </div>
 </div>

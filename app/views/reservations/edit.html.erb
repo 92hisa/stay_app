@@ -1,26 +1,37 @@
-<h1>予約を変更する</h1>
+<div class="container">
 
-<%= form_with(model: [@post, @reservation], local: true) do |f| %>
-<div class="row">
-  <div class="form-group">
-    <div class="field">
-     <%= f.label "チェックイン" %><br/>
-     <%= f.date_field :checkin, class: "form-control" %>
-     
-    </div>
-    <div class="field">
-      <%= f.label "チェックアウト" %><br/>
-      <%= f.date_field :checkout, class: "form-control"%>
-    </div><br>
-    
-    <div class="form-group">
-      <%= f.label "宿泊人数" %><br/>
-      <%= f.text_field :people, class: "form-control" %>
-    </div>
-    
-    <div class="actions">
-      <%= f.submit "変更する" %>
-    </div>
-  </div>
- </div>  
-<% end %>
+    <h1 class="text-center">予約を変更する</h1>
+
+    <%= form_with(model: [@post, @reservation], local: true) do |f| %>
+     <div class="row">
+        <div class="col-md-6 col-sm-6 offset-md-3">
+          
+          <div class="form-group">
+            
+            <div class="field">
+             <%= f.label "チェックイン" %><br/>
+             <%= f.date_field :checkin, class: "form-control", min: Date.current %>
+            </div><br>
+            
+            <div class="field">
+              <%= f.label "チェックアウト" %><br/>
+              <%= f.date_field :checkout, class: "form-control", min: Date.current %>
+            </div><br>
+            
+            <div class="form-group">
+              <%= f.label "宿泊人数" %><br/>
+              <%= f.text_field :people, class: "form-control" %>
+            </div><br>
+            
+            <div class="actions text-right">
+              <%= f.submit "変更する" %><br>
+            </div><br>
+            
+            <div class="text-right">
+            <%= link_to "予約確認ページに戻る", reservation_history_path %><br>
+            </div>
+          </div>
+        </div>  
+     </div>
+    <% end %>
+</div>

@@ -5,4 +5,12 @@ class Post < ApplicationRecord
     
     mount_uploader :caption, ImageUploader
     
+    def self.search(search)
+      if search
+        Post.where(['prefecture LIKE ?', "%#{search}%"])
+      else
+        Post.all
+      end
+    end
+    
 end

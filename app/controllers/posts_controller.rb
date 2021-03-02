@@ -23,6 +23,13 @@ class PostsController < ApplicationController
         @post = Post.order('created_at DESC')
     end
     
+    def search
+        if params[:search]
+            @search = Post.where('prefecture LIKE ?', "%#{params[:search]}%")
+        else
+            @search = Post.all
+        end
+    end
     
     private
     

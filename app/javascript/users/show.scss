@@ -1,9 +1,11 @@
-.icon_image{
-  width: 200px;
-  height: 200px;
-  //サイズ指定
-  border-radius: 100px;
-  //画像を丸くする
-  object-fit: cover;
-  //タテヨコ比を変えないままトリミング
+ body {
+ padding-top: 30px;
+ padding-bottom: 30px;
 }
+
+.icon_image {
+  width: 250px;
+  height: 100px;
+  text-align: center;
+}
+
