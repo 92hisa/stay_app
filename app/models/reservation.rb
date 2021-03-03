@@ -13,4 +13,8 @@ class Reservation < ApplicationRecord
             errors.add(:checkout, "正しい日付を入力してください")
         end
     end
+    
+    def stay_for
+        checkin - checkout
+    end
 end

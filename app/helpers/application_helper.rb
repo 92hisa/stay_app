@@ -17,5 +17,6 @@ module ApplicationHelper
     （例）東京都品川区
   EOS
   end
+
   
 end

@@ -20,6 +20,9 @@ class ReservationsController < ApplicationController
     def show
         @post = Post.find_by(id: params[:post_id])
         @reservation = Reservation.find_by(id: params[:id])
+        
+        date_diff = Reservation.new()
+        
     end
     
     def index
@@ -57,6 +60,7 @@ class ReservationsController < ApplicationController
             flash[:alert] = "予約のキャンセルができませんでした"
         end
     end
+    
     
     private
     

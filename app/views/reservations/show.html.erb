@@ -11,18 +11,23 @@
             <th>部屋の名前</th>
             <th>チェックイン</th>
             <th>チェックアウト</th>
+            <th>宿泊日数</th>
             <th>宿泊人数</th>
+            <th>合計金額</th>
             </tr>
             </thread
             <tbody>
             <tr>
+                <% @abs = 0 %>
                 <% @post.reservations.each do |r| %>
                 <td><%= r.id %></td>
                 <td><%= r.created_at.to_s(:datetime_jp) %></td>
                 <td><%= @post.room_name %></td>
                 <td><%= r.checkin %></td>
                 <td><%= r.checkout %></td>
+                <td><%= @abs = (r.checkout - r.checkin).to_i %><%=  "日間"%></td>
                 <td><%= r.people %></td>
+                <td><%=  "¥"%><%= @abs * r.people * @post.price.to_i %></td>
             </th>
             </tbody>  
         </table>
