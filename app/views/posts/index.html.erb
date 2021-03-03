@@ -1,90 +1,30 @@
- <main role="main">
-   
-      
-      
-      <!-- カルーセル --> 
-      <div  id="myCarousel" class="carousel slide" data-ride="carousel">
-          
-        <ol class="carousel-indicators">
-          <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-          <li data-target="#myCarousel" data-slide-to="1"></li>
-          <li data-target="#myCarousel" data-slide-to="2"></li>
-        </ol>  
-          
-          
-        <div class="carousel-inner">
-          
-          <div class="carousel-item active">
-            <%= image_tag 'room1.jpg', class: "d-block img-fluid"%>
-            <div class="container-fluid img-hidden">
-              <div class="carousel-caption ">
-                <h1>hogehoge</h1>
-                <p>foobar</p>
-              </div>
-            </div>
+      <!--site-top--> 
+      <div class="jumbotron jumbotron-extend" style="background: url(<%= asset_path "room1.jpg" %>) center; no-repeat; background-size:cover; opacity: 0.6;>
+          <div class="container-fluid jumbotron-container">
+              <h1 class="site-name">Journey Japan with StayShare!</h1>
+              <%= form_with url: search_path, method: :get, class: "search_container text-center", local: true do |f| %>
+              <%= f.label ''%>
+              <%= f.text_field :search, placeholder: "  エリア検索（例：東京,品川 ）" %>
+              <%= f.submit '' %> <%= link_to '', search_path %>
+              <% end %>
           </div>
-          
-          <div class="carousel-item">
-            <%= image_tag 'room2.jpg', class: "d-block img-fluid"%>
-            <div class="container-fluid img-hidden">
-              <div class="carousel-caption text-right">
-                <h1>Another example headline.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Learn more</a></p>
-              </div>
-            </div>
-          </div>
-          <div class="carousel-item">
-            <%= image_tag 'room3.jpg', class: "d-block img-fluid"%>
-            
-            <div class="container-fluid img-hidden">
-              <div class="carousel-caption">
-                <h1>One more for good measure.</h1>
-                <p>Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.</p>
-                <p><a class="btn btn-lg btn-primary" href="#" role="button">Browse gallery</a></p>
-              </div>
-            </div>
-            
-          </div>
-        </div>
-        
-        <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
-         <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-         <span class="sr-only">Previous</span>
-        </a>
-        
-        <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
-         <span class="carousel-control-next-icon" aria-hidden="true"></span>
-         <span class="sr-only">Next</span>
-        </a>
       </div>
       
-      <!--Search form-->
-      <div class="container text-center">
-            <%= form_with url: search_path, method: :get, class: "search_container", local: true do |f| %>
-            <%= f.label ''%>
-            <%= f.text_field :search, placeholder: "エリア検索（例：東京,品川 ）" %>
-            <%= f.submit '' %> <%= link_to '', search_path %>
-            <% end %>
-      </div>
-      
-      
-      <!--4item>-->
-      
+      <!--New_item>-->
       <div class="container">
     <h3 class="h3 text-center">新着の部屋</h3>
     <div class="row">
         <div class="col-md-3 col-sm-6">
             <div class="product-grid">
                 <div class="product-image">
-                    <a href="#">
+                    <a href="https://efc1054e16a748d9be735ff93f500503.vfs.cloud9.ap-northeast-1.amazonaws.com/posts/10">
                         <%= image_tag 'new/new_tokyo.jpg', class: "img-fluid" %>
                     </a>
                     <span class="product-new-label">NEW</span>
                     <span class="product-discount-label">東京</span>
                 </div>
                 <div class="product-content">
-                    <h3 class="title"><a href="#">東京都新宿区</a></h3>
+                    <h3 class="title"><a href="https://efc1054e16a748d9be735ff93f500503.vfs.cloud9.ap-northeast-1.amazonaws.com/posts/10">東京都墨田区</a></h3>
                     <div class="price">1泊20,000円
                     </div>
                 </div>
@@ -93,14 +33,14 @@
         <div class="col-md-3 col-sm-6">
             <div class="product-grid">
                 <div class="product-image">
-                    <a href="#">
+                    <a href="https://efc1054e16a748d9be735ff93f500503.vfs.cloud9.ap-northeast-1.amazonaws.com/posts/4">
                         <%= image_tag 'new/new_okinawa.jpg', class: "img-fluid" %>
                     </a>
                     <span class="product-new-label">NEW</span>
                     <span class="product-discount-label">沖縄</span>
                 </div>
                 <div class="product-content">
-                    <h3 class="title"><a href="#">沖縄県那覇市</a></h3>
+                    <h3 class="title"><a href="https://efc1054e16a748d9be735ff93f500503.vfs.cloud9.ap-northeast-1.amazonaws.com/posts/4">沖縄県那覇市</a></h3>
                     <div class="price">1泊10,000円
                     </div>
                 </div>
@@ -109,14 +49,14 @@
         <div class="col-md-3 col-sm-6">
             <div class="product-grid">
                 <div class="product-image">
-                    <a href="#">
+                    <a href="https://efc1054e16a748d9be735ff93f500503.vfs.cloud9.ap-northeast-1.amazonaws.com/posts/1">
                         <%= image_tag 'new/new_osaka.jpg', class: "img-fluid" %>
                     </a>
                     <span class="product-new-label">NEW</span>
                     <span class="product-discount-label">大阪</span>
                 </div>
                 <div class="product-content">
-                    <h3 class="title"><a href="#">大阪府北区</a></h3>
+                    <h3 class="title"><a href="https://efc1054e16a748d9be735ff93f500503.vfs.cloud9.ap-northeast-1.amazonaws.com/posts/1">大阪府北区</a></h3>
                     <div class="price">1泊8,000円
                     </div>
                 </div>
@@ -125,14 +65,14 @@
         <div class="col-md-3 col-sm-6">
             <div class="product-grid">
                 <div class="product-image">
-                    <a href="#">
+                    <a href="https://efc1054e16a748d9be735ff93f500503.vfs.cloud9.ap-northeast-1.amazonaws.com/posts/7">
                         <%= image_tag 'new/new_fukuoka.jpg', class: "img-fluid" %>
                     </a>
                     <span class="product-new-label">NEW</span>
                     <span class="product-discount-label">福岡</span>
                 </div>
                 <div class="product-content">
-                    <h3 class="title"><a href="#">福岡県福岡市</a></h3>
+                    <h3 class="title"><a href="https://efc1054e16a748d9be735ff93f500503.vfs.cloud9.ap-northeast-1.amazonaws.com/posts/7">福岡県福岡市</a></h3>
                     <div class="price">１泊7,000円
                     </div>
                 </div>
@@ -149,8 +89,10 @@
           <div class="col-md-6">
             <div class="product-grid">
               <div class="product-image">
+                <a href="https://efc1054e16a748d9be735ff93f500503.vfs.cloud9.ap-northeast-1.amazonaws.com/search?search=%E6%9D%B1%E4%BA%AC">
                 <%= image_tag 'tokyo.jpg', class: "img-fluid" %>
-                <span class="product-discount-label">東京</span>  
+                <span class="product-discount-label">東京</span>
+                </a>
               </div>
             </div>  
           </div>  
@@ -172,30 +114,32 @@
             <div class="col-md-4">
               <div class="product-grid">
                 <div class="product-image">
+                  <a href="https://efc1054e16a748d9be735ff93f500503.vfs.cloud9.ap-northeast-1.amazonaws.com/search?search=%E4%BA%AC%E9%83%BD">
                   <%= image_tag 'kyoto.jpg', class: "img-fluid" %>
                   <span class="product-discount-label">京都</span>  
+                  </a>
                 </div>
               </div>
             </div>
             <div class="col-md-4">
               <div class="product-grid">
                 <div class="product-image">
+                  <a href="https://efc1054e16a748d9be735ff93f500503.vfs.cloud9.ap-northeast-1.amazonaws.com/search?search=%E7%A6%8F%E5%B2%A1">
                   <%= image_tag 'fukuoka.jpg', class: "img-fluid" %>
-                  <span class="product-discount-label">福岡</span>  
+                  <span class="product-discount-label">福岡</span>
+                  </a>
                 </div>
               </div>
             </div>
             <div class="col-md-4">
               <div class="product-grid">
                 <div class="product-image">
+                  <a href="https://efc1054e16a748d9be735ff93f500503.vfs.cloud9.ap-northeast-1.amazonaws.com/search?search=%E6%B2%96%E7%B8%84">
                   <%= image_tag 'okinawa2.jpg', class: "img-fluid" %>
-                  <span class="product-discount-label">沖縄</span>  
+                  <span class="product-discount-label">沖縄</span>
+                  </a>
                 </div>
               </div>
             </div>
         </div>
       </div>
-
-
-    </main>
-    <!-- ここまで追加 -->

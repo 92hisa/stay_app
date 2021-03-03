@@ -2,11 +2,11 @@
 
   <h1 class="text-center">予約フォーム</h1>
 
-  <p>１名あたり</p>
-  <%= number_to_currency(@post.price, unit: "￥", precision: 0) + "/泊"%><br>
-
-  <div class="row">
+    <div class="row">
     <div class="col-md-6 col-sm-6 offset-md-3">
+        <p class="text-center">１名あたり
+        <%= number_to_currency(@post.price, unit: "￥", precision: 0) + "/泊"%>
+        </p>
         <div class="form-group">
           <%= form_with(model: [@post, @reservation], local: true) do |f| %><br>
             <div class="field">
@@ -19,11 +19,11 @@
             </div><br>
             <div class="field">
               <%= f.label "宿泊人数" %>
-              <%= f.text_field :people, class: "form-control" %><br>
+              <%= f.select :people,[['1名', 1], ['2名', 2], ['3名', 3], ['4名', 4], ['5名', 5], ['6名', 6], ['7名', 7], ['8名', 8], ['9名', 9], ['10名', 10]], { include_blank: true, selected: 1 }, class: "form-control" %>
             </div><br>
             
             <div class="actions text-right">
-              <%= f.submit "予約する" %>
+              <%= f.submit "予約する", class: "btn btn-primary" %>
             </div><br>
             <div class="text-right">
               <%= link_to "戻る", :back %>

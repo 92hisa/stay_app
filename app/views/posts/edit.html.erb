@@ -20,7 +20,7 @@
             
             <div class="field">
               <%= f.label "住所" %><br/>
-              <%= f.text_field :city, autofocus: true, autocomplete: "adress", class: "form-control" %>
+              <%= f.text_field :city, autofocus: true, autocomplete: "adress",placeholder: address_placeholder, class: "form-control" %>
             </div><br>
             
             <div class="field">
@@ -38,7 +38,7 @@
             </div><br>
             
             <div class="text-right">
-              <%= link_to "掲載削除", post_path(@post.id), method: :delete, class: "btn btn-primary" %><br>
+              <%= link_to "掲載削除", post_path(@post.id), method: :delete, class: "btn btn-danger" %><br>
             </div><br>
             
             

@@ -27,7 +27,7 @@
           <div class="field">
             <%= f.label "パスワード" %>
             <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <em>(<%= @minimum_password_length %> 文字以上)</em>
             <% end %><br />
             <%= f.password_field :password, autocomplete: "new-password", class: "form-control" %>
           </div><br>
@@ -39,7 +39,7 @@
           
           <div class="field">
            <%= f.label "自己紹介" %>
-           <%= f.text_field :intro_text,  autofocus: true, autocomplete: "introduction", class: "form-control" %>
+           <%= f.text_area :intro_text, autofocus: true, rows: "4", placeholder: text_placeholder, class: "form-control" %>
           </div><br>
         
           <div class="actions text-right">

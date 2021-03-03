@@ -23,6 +23,29 @@ p {
 
 /* ここから追加 余白や要素の配置、フォントサイズを設定 */
 
+// サイトトップ
+.jumbotron-extend {
+    height: 100vh;
+    min-height: 350px;
+    margin-bottom: 30px;
+}
+.jumbotron-container {
+    position: relative;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+}
+.site-name {
+    margin-bottom: 30px;
+    font-size: 60px;
+    font-family: 'Playfair Display', serif;
+    color: #000000;
+    text-align: center;
+}
+
+
+
 .row {
   margin-top: 30px;
   margin-bottom: 30px;
