@@ -20,7 +20,11 @@
 						<h4 class="price">1泊料金 <span><%= "¥" + @post.price %></span></h4>
 						<p class="vote"><%= @post.city %></p>
 						<div class="action">
+								<% if user_signed_in? %>
 						    <%= link_to "予約する", new_post_reservation_path(@post.id), class: "btn btn-defalut add-to-cart" %><br>
+						    <% else %>
+						    <%= link_to "ユーザー登録が必要です", new_user_registration_path, class: "btn btn-defalut add-to-cart" %>
+						    <% end %>
 						</div>
 					</div>
 				</div>

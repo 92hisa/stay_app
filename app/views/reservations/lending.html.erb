@@ -31,9 +31,13 @@
                 <td><%= link_to "詳細", post_reservation_path(lending, r), class: "btn btn-primary" %></td>
                 <% end %>
                 </tbody>
+                </table>
+                <div class="text-right">
+                <%= link_to "戻る", :back %>
+                </div>
             <% end %>
             <% end %>
-            </table>
+            
         </div>
     </div>
 </div>

@@ -35,8 +35,8 @@
         <% if r.user_id == current_user.id %>
                 <td><%= link_to "予約を変更する", edit_post_reservation_path(r, r) %><br>
                 <td><%= link_to "予約をキャンセルする", post_reservation_path(r, r), method: :delete %><br>
-                <td><%= link_to "戻る", :back %><br>
         <% end %>
+        <td><%= link_to "戻る", :back %><br>
         <% end %>
         </div>
     </div>

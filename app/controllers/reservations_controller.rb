@@ -3,6 +3,7 @@ class ReservationsController < ApplicationController
     def new
         @post = Post.find_by(id: params[:post_id])
         @reservation = Reservation.new
+        
     end
     
     def create
@@ -10,7 +11,7 @@ class ReservationsController < ApplicationController
         @reservation = @post.reservations.build(reservation_params)
         if @reservation.valid? && @reservation.save
             flash[:notice] = "予約が完了しました"
-            redirect_to post_reservation_path(id: current_user.id)
+            redirect_to post_reservation_path(@post, @reservation)
         else
             flash[:alert] = "予約できませんでした"
             render 'new'
@@ -20,9 +21,6 @@ class ReservationsController < ApplicationController
     def show
         @post = Post.find_by(id: params[:post_id])
         @reservation = Reservation.find_by(id: params[:id])
-        
-        date_diff = Reservation.new()
-        
     end
     
     def index

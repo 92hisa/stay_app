@@ -60,6 +60,12 @@ class PostsController < ApplicationController
         else
             @search = Post.all
         end
+        
+        if params[:free_word]
+            @search = Post.where('room_intro LIKE ?', "%#{params[:free_word]}%")
+        else
+            @search = Post.all
+        end
     end
     
     private
