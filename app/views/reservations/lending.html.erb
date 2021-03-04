@@ -1,0 +1,43 @@
+<div class="container">
+    <h1 class="text-center">部屋の貸出し予定</h1>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 offset-md-12">
+            <table class="table text-center">
+                <thread>
+                <tr>
+                <th>予約ID</th>
+                <th>予約日</th>
+                <th>User_ID</th>
+                <th>予約者名</th>
+                <th>Post_ID</th>
+                <th>貸出し日</th>
+                <th>貸出し終了日</th>
+                <th>宿泊人数</th>
+                <th>詳細</th>
+                </tr>
+                </thread>
+            <% @lending.each do |lending| %>
+            <% lending.reservations.each do |r| %>
+                <tbody>
+                <td><%= r.id %></td>
+                <td><%= r.created_at.to_s(:datetime_jp) %></td>
+                <td><%= r.user_id %></td>
+                <td><%= r.user.name %></td>
+                <td><%= r.post_id %></td>
+                <td><%= r.checkin %></td>
+                <td><%= r.checkout %></td>
+                <td><%= r.people %></td>
+                <% if lending.user_id == current_user.id %>
+                <td><%= link_to "詳細", post_reservation_path(lending, r), class: "btn btn-primary" %></td>
+                <% end %>
+                </tbody>
+                </table>
+                <div class="text-right">
+                <%= link_to "戻る", :back %>
+                </div>
+            <% end %>
+            <% end %>
+            
+        </div>
+    </div>
+</div>

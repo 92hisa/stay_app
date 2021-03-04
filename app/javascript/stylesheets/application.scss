@@ -1,0 +1,14 @@
+@import '~bootstrap/scss/bootstrap';
+
+@import "custom";
+@import "users/devise";
+
+@import "users/show";
+
+@import "users/edit";
+
+@import "posts/index";
+
+@import "posts/search";
+
+@import "posts/show";

@@ -1,0 +1,39 @@
+<div class="container">
+    <h1 class="text-center">宿泊予約一覧</h1>
+    <div class="row">
+        <div class="col-md-12 col-sm-12 offset-md-12">
+            <table class="table text-center">
+                <thread>
+                <tr>
+                <th>予約ID</th>
+                <th>予約日</th>
+                <th>チェックイン</th>
+                <th>チェックアウト</th>
+                <th>宿泊人数</th>
+                <th></th>
+                <th></th>
+                <th></th>
+                </tr>
+                </thread>
+                <% @reservation_all.each do |r|%>
+                <tbody>
+                <td><%= r.id %></td>
+                <td><%= r.created_at.to_s(:datetime_jp)  %></td>
+                <td><%= r.checkin %></td>
+                <td><%= r.checkout %></td>
+                <td><%= r.people %></td>
+                <% if r.user_id == current_user.id %>
+                <td><%= link_to "予約詳細", post_reservation_path(r.post_id, r), class: "btn btn-primary" %></td>
+                <td><%= link_to "予約変更", edit_post_reservation_path(r.post_id, r), class: "btn btn-primary" %></td>
+                <td><%= link_to "予約キャンセル", post_reservation_path(r.post_id, r), method: :delete, class: "btn btn-primary" %></td>
+                <% end %>
+                </tbody>
+            <% end %>
+            </table>
+            <div class="text-right">
+                <%= link_to "戻る", :back %>
+            </div>
+        </div>
+    </div>
+</div>
+

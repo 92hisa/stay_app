@@ -1,0 +1,25 @@
+
+  <div class="container">
+    <h3 class="h3 text-center">検索結果一覧</h3>
+    <div class="row">
+      <% @search.each do |post| %>
+        <div class="col-md-3 col-sm-6">
+            <div class="product-grid">
+                <div class="product-image">
+                    <a>
+                        <% if post.caption? %>
+                        <%= link_to image_tag(post.caption.medium.url), post_path(post), class: "img-fluid" %>
+                        <% else %>
+                        <%= link_to image_tag('coomingsoon.jpg'), post_path(post), class: "img-fluid" %>
+                        <% end %>
+                    </a>
+                </div>
+                <div class="product-content">
+                    <h3 class="title"><%= post.city %></h3>
+                    <div class="price"><%= "1泊 ¥" + post.price %></div>
+                </div>
+            </div>
+        </div>
+      <% end %>
+    </div>
+  </div>

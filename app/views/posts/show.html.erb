@@ -1,0 +1,33 @@
+	<div class="container">
+		<div class="text-right">
+		<%= link_to "前のページに戻る", :back %>
+		</div>
+		<div class="card">
+			<div class="container-fliud">
+				<div class="wrapper row">
+					<div class="preview col-md-6">
+						  <% if @post.caption? %>
+						  <div class="preview-pic tab-content">
+						  <div class="tab-pane active" id="pic-1"><%= image_tag @post.caption.url, size: '450x450' %></div>
+						  <% else %>
+						  <%= image_tag 'coomingsoon.jpg', size: '450x450' %>
+                          <% end %>
+						</div>
+					</div>
+					<div class="details col-md-6">
+						<h3 class="product-title"><%= @post.room_name %></h3>
+						<p class="product-description"><%= @post.room_intro %></p>
+						<h4 class="price">1泊料金 <span><%= "¥" + @post.price %></span></h4>
+						<p class="vote"><%= @post.city %></p>
+						<div class="action">
+								<% if user_signed_in? %>
+						    <%= link_to "予約する", new_post_reservation_path(@post.id), class: "btn btn-defalut add-to-cart" %><br>
+						    <% else %>
+						    <%= link_to "ユーザー登録が必要です", new_user_registration_path, class: "btn btn-defalut add-to-cart" %>
+						    <% end %>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
